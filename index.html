@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daniel & Sophia - Wedding Invitation</title>
+    <title>Mena & Kristena - Wedding Invitation</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -15,8 +15,17 @@
 </head>
 <body>
 
+    <!-- Welcome / Enter Screen to unlock Audio -->
+    <div id="welcomeOverlay" class="welcome-overlay">
+        <div class="welcome-content">
+            <h2>Mena <span>&</span> Kristen</h2>
+            <p>Welcome to our wedding website</p>
+            <button id="enterBtn" class="btn-primary" style="font-family: 'Cairo', sans-serif; font-weight: 600;">Open Invitation <br> إفتح الدعوة</button>
+        </div>
+    </div>
+
     <!-- Audio Player -->
-    <audio id="bgMusic" autoplay muted loop>
+    <audio id="bgMusic" autoplay loop>
         <source src="videoplayback.m4a">
         Your browser does not support the audio element.
     </audio>
@@ -28,12 +37,12 @@
     <header class="hero" id="home">
         <div class="hero-overlay"></div>
         <div class="hero-content reveal fade-up">
-            <h1 class="couple-names">Daniel <span>&</span> Sophia</h1>
+            <h1 class="couple-names">Mena <span>&</span> Kristen</h1>
             <p class="invitation-line">Together with their families, they invite you to celebrate their wedding.</p>
             <div class="wedding-details">
-                <p class="date">October 24, 2026</p>
+                <p class="date">September 20, 2026</p>
                 <div class="divider"></div>
-                <p class="location">Paris, France</p>
+                <p class="location">Al Maragha, Egypt</p>
             </div>
         </div>
         <a href="#story" class="scroll-indicator">
@@ -45,33 +54,33 @@
     <section class="story" id="story">
         <div class="container reveal fade-up">
             <h2 class="section-title">Our Story</h2>
-            <p class="section-subtitle">A journey of love, joy, and endless laughter.</p>
-            <p class="story-text">We first met under the glowing lights of a small Parisian café. What started as a shared cup of coffee blossomed into an unforgettable adventure. Through countless travels, late-night conversations, and unwavering support, we knew we had found our forever in each other.</p>
+            <p class="section-subtitle">From childhood friends to forever soulmates.</p>
+            <p class="story-text">Some love stories start early. We grew up together, sharing our childhood memories, laughter, and dreams. As the years passed, our bond only grew stronger, turning a beautiful friendship into an endless love.</p>
             
             <div class="timeline">
                 <div class="timeline-item reveal slide-left">
-                    <div class="timeline-icon"><i class="fas fa-coffee"></i></div>
+                    <div class="timeline-icon"><i class="fas fa-child"></i></div>
                     <div class="timeline-content">
-                        <h3>First Met</h3>
-                        <p>A chance encounter at a cozy coffee shop that changed our lives forever.</p>
-                    </div>
-                </div>
-                <div class="timeline-item reveal slide-right">
-                    <div class="timeline-icon"><i class="fas fa-ring"></i></div>
-                    <div class="timeline-content">
-                        <h3>The Proposal</h3>
-                        <p>Under a starlit snowy night, a beautiful promise was made.</p>
-                    </div>
-                </div>
-                <div class="timeline-item reveal slide-left">
-                    <div class="timeline-icon"><i class="fas fa-glass-cheers"></i></div>
-                    <div class="timeline-content">
-                        <h3>Engagement</h3>
-                        <p>Celebrating our commitment with our closest family and friends.</p>
+                        <h3>Childhood Friends</h3>
+                        <p>Growing up together and sharing our earliest memories.</p>
                     </div>
                 </div>
                 <div class="timeline-item reveal slide-right">
                     <div class="timeline-icon"><i class="fas fa-heart"></i></div>
+                    <div class="timeline-content">
+                        <h3>Falling in Love</h3>
+                        <p>Realizing that our friendship was meant to be something much more.</p>
+                    </div>
+                </div>
+                <div class="timeline-item reveal slide-left">
+                    <div class="timeline-icon"><i class="fas fa-ring"></i></div>
+                    <div class="timeline-content">
+                        <h3>The Proposal</h3>
+                        <p>A beautiful promise made to spend the rest of our lives together.</p>
+                    </div>
+                </div>
+                <div class="timeline-item reveal slide-right">
+                    <div class="timeline-icon"><i class="fas fa-glass-cheers"></i></div>
                     <div class="timeline-content">
                         <h3>Wedding Day</h3>
                         <p>The beginning of our happily ever after.</p>
@@ -88,19 +97,19 @@
             <div class="events-grid">
                 <div class="event-card">
                     <div class="event-icon"><i class="fas fa-church"></i></div>
-                    <h3>Ceremony</h3>
-                    <p class="event-time">3:00 PM</p>
-                    <p class="event-location-name">Saint-Sulpice Church</p>
-                    <p class="event-address">2 Rue Palatine, 75006 Paris</p>
-                    <a href="https://maps.google.com/?q=Saint-Sulpice+Paris" target="_blank" class="btn-secondary">Directions <i class="fas fa-map-marker-alt"></i></a>
+                    <h3>Ceremony / الأكليل</h3>
+                    <p class="event-time">7:00 PM</p>
+                    <p class="event-location-name">كنيسة العذراء مريم بالمراغة</p>
+                    <p class="event-address">Al Maragha</p>
+                    <a href="https://maps.google.com/?q=كنيسة+العذراء+مريم+بالمراغة" target="_blank" class="btn-secondary">Directions <i class="fas fa-map-marker-alt"></i></a>
                 </div>
                 <div class="event-card">
                     <div class="event-icon"><i class="fas fa-utensils"></i></div>
-                    <h3>Reception</h3>
-                    <p class="event-time">6:00 PM</p>
-                    <p class="event-location-name">The Grand Hotel</p>
-                    <p class="event-address">12 Rue d'Élysée, 75008 Paris</p>
-                    <a href="https://maps.google.com/?q=12+Rue+d'Elysee+Paris" target="_blank" class="btn-secondary">Directions <i class="fas fa-map-marker-alt"></i></a>
+                    <h3>Reception / الحفل</h3>
+                    <p class="event-time">9:00 PM</p>
+                    <p class="event-location-name">قاعة لاتويا</p>
+                    <p class="event-address">Al Maragha</p>
+                    <a href="https://maps.google.com/?q=قاعة+لاتويا+المراغة" target="_blank" class="btn-secondary">Directions <i class="fas fa-map-marker-alt"></i></a>
                 </div>
             </div>
         </div>
@@ -126,12 +135,11 @@
             <h2 class="section-title">Captured Moments</h2>
             <div class="gallery-grid">
                 <!-- Using placeholder names, script will map images -->
-                <div class="gallery-item"><img src="assets/couple_photo.png" alt="Couple Photo 1" class="gallery-img"></div>
-                <div class="gallery-item"><img src="assets/floral_detail.png" alt="Floral decor" class="gallery-img"></div>
-                <div class="gallery-item"><img src="assets/venue_photo.png" alt="Venue" class="gallery-img"></div>
-                <div class="gallery-item"><img src="assets/couple_photo.png" alt="Couple" class="gallery-img"></div>
-                <div class="gallery-item"><img src="assets/floral_detail.png" alt="Flowers" class="gallery-img"></div>
-                <div class="gallery-item"><img src="assets/venue_photo.png" alt="Venue details" class="gallery-img"></div>
+                <div class="gallery-item"><img src="assets/gallery_1.jpg" alt="Childhood 1" class="gallery-img"></div>
+                <div class="gallery-item"><img src="assets/gallery_2.jpg" alt="Couple Photo 1" class="gallery-img"></div>
+                <div class="gallery-item"><img src="assets/gallery_3.png" alt="Couple Photo 2" class="gallery-img"></div>
+                <div class="gallery-item"><img src="assets/gallery_4.jpg" alt="Childhood 2" class="gallery-img"></div>
+                <div class="gallery-item"><img src="assets/hero_bg.jpg" alt="Main Photo" class="gallery-img"></div>
             </div>
         </div>
         
@@ -146,18 +154,18 @@
     <section class="contact reveal fade-up" id="contact">
         <div class="container">
             <h2 class="section-title">Contact Us</h2>
-            <p class="section-subtitle">If you have any questions, feel free to reach out.</p>
+            <p class="section-subtitle arabic-text">لو حابب تعمل حاجه زى كده كهدية لحد من حبايبك او فرحك قريب تقدر تتواصل معانا</p>
             <div class="contact-details">
                 <div class="contact-item">
                     <i class="fas fa-phone"></i>
-                    <p>+33 1 23 45 67 89</p>
+                    <p>+20 1208773229</p>
                 </div>
                 <div class="contact-item">
                     <i class="fas fa-envelope"></i>
-                    <p>hello@danielandsophia.com</p>
+                    <p>hakimmarclino@gmail.com</p>
                 </div>
             </div>
-            <a href="https://wa.me/33123456789" target="_blank" class="btn-whatsapp">
+            <a href="https://wa.me/201208773229" target="_blank" class="btn-whatsapp">
                 <i class="fab fa-whatsapp"></i> Chat on WhatsApp
             </a>
         </div>
@@ -166,9 +174,9 @@
     <!-- 8. Footer -->
     <footer>
         <div class="container">
-            <h3 class="footer-names">Daniel & Sophia</h3>
+            <h3 class="footer-names">Mena & Kristena</h3>
             <p>We look forward to celebrating this special day with you.</p>
-            <p class="copyright">&copy; 2026 Daniel & Sophia.</p>
+            <p class="copyright">&copy; 2026 Mena & Kristena.</p>
             
             <div class="agency-credit">
                 <p>Created by <span>Sophia Tech</span></p>

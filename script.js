@@ -21,9 +21,9 @@ document.addEventListener('DOMContentLoaded', () => {
     revealOnScroll(); // Trigger on load
 
     /* -------------------------------------------
-       Countdown Timer Logic (Oct 24, 2026)
+       Countdown Timer Logic (Sep 20, 2026)
     ------------------------------------------- */
-    const targetDate = new Date("Oct 24, 2026 15:00:00").getTime();
+    const targetDate = new Date("Sep 20, 2026 19:00:00").getTime();
 
     const updateCountdown = setInterval(() => {
         const now = new Date().getTime();
@@ -55,59 +55,49 @@ document.addEventListener('DOMContentLoaded', () => {
     
     bgMusic.volume = 0.5;
 
-    // Track state: Initially true because we set 'autoplay' and 'muted' in HTML
-    let isPlaying = true;
-    let isMuted = true;
-
-    // Set initial button state to reflect muted autoplay
-    toggleIcon.classList.remove('fa-volume-up');
-    toggleIcon.classList.add('fa-volume-mute');
-    musicToggleBtn.classList.remove('playing');
+    let isPlaying = false;
+    
+    // Try to play immediately (browser might block unmuted autoplay)
+    bgMusic.play().then(() => {
+        isPlaying = true;
+        toggleIcon.classList.remove('fa-volume-mute');
+        toggleIcon.classList.add('fa-volume-up');
+        musicToggleBtn.classList.add('playing');
+    }).catch((e) => {
+        console.log("Autoplay blocked by browser. Waiting for user interaction.");
+        toggleIcon.classList.remove('fa-volume-up');
+        toggleIcon.classList.add('fa-volume-mute');
+        musicToggleBtn.classList.remove('playing');
+    });
 
     const toggleMusic = () => {
-        // If it's the first time interacting, we just want to unmute it
-        if (isMuted) {
-            bgMusic.muted = false;
-            isMuted = false;
-            toggleIcon.classList.remove('fa-volume-mute');
-            toggleIcon.classList.add('fa-volume-up');
-            musicToggleBtn.classList.add('playing');
-            
-            // Ensure it's actually playing (some browsers might pause instead of mute)
-            if (bgMusic.paused) {
-                bgMusic.play().catch(e => console.log("Play failed:", e));
-            }
-            isPlaying = true;
+        if (isPlaying) {
+            bgMusic.pause();
+            toggleIcon.classList.remove('fa-volume-up');
+            toggleIcon.classList.add('fa-volume-mute');
+            musicToggleBtn.classList.remove('playing');
+            isPlaying = false;
         } else {
-            // Standard toggle behavior after initial unmute
-            if (isPlaying) {
-                bgMusic.pause();
-                toggleIcon.classList.remove('fa-volume-up');
-                toggleIcon.classList.add('fa-volume-mute');
-                musicToggleBtn.classList.remove('playing');
+            bgMusic.play().then(() => {
+                toggleIcon.classList.remove('fa-volume-mute');
+                toggleIcon.classList.add('fa-volume-up');
+                musicToggleBtn.classList.add('playing');
+                isPlaying = true;
+            }).catch(e => {
+                console.log("Audio play prevented:", e);
                 isPlaying = false;
-            } else {
-                bgMusic.play().then(() => {
-                    toggleIcon.classList.remove('fa-volume-mute');
-                    toggleIcon.classList.add('fa-volume-up');
-                    musicToggleBtn.classList.add('playing');
-                    isPlaying = true;
-                }).catch(e => {
-                    console.log("Audio play prevented:", e);
-                    isPlaying = false;
-                });
-            }
+            });
         }
     };
 
     musicToggleBtn.addEventListener('click', (e) => {
-        e.stopPropagation(); // Prevent document click from firing too
+        e.stopPropagation();
         toggleMusic();
     });
 
-    // Handle unlocking audio/unmuting on first meaningful interaction anywhere
+    // Handle unlocking audio on first meaningful interaction anywhere
     const unlockAudio = () => {
-        if (isMuted) {
+        if (!isPlaying) {
             toggleMusic();
         }
         document.removeEventListener('click', unlockAudio);
