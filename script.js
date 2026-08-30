@@ -57,18 +57,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let isPlaying = false;
     
-    // Try to play immediately (browser might block unmuted autoplay)
-    bgMusic.play().then(() => {
-        isPlaying = true;
-        toggleIcon.classList.remove('fa-volume-mute');
-        toggleIcon.classList.add('fa-volume-up');
-        musicToggleBtn.classList.add('playing');
-    }).catch((e) => {
-        console.log("Autoplay blocked by browser. Waiting for user interaction.");
-        toggleIcon.classList.remove('fa-volume-up');
-        toggleIcon.classList.add('fa-volume-mute');
-        musicToggleBtn.classList.remove('playing');
-    });
+    const welcomeOverlay = document.getElementById('welcomeOverlay');
+    const enterBtn = document.getElementById('enterBtn');
+
+    // Remove overlay and play music on click
+    if (enterBtn && welcomeOverlay) {
+        enterBtn.addEventListener('click', () => {
+            // Fade out
+            welcomeOverlay.style.opacity = '0';
+            
+            // Completely remove it from the page after fade out
+            setTimeout(() => {
+                welcomeOverlay.style.display = 'none';
+            }, 800);
+            
+            // Force the animations to trigger for the content underneath
+            setTimeout(() => {
+                if (typeof revealOnScroll === 'function') {
+                    revealOnScroll();
+                }
+            }, 100);
+            
+            bgMusic.play().then(() => {
+                isPlaying = true;
+                toggleIcon.classList.remove('fa-volume-mute');
+                toggleIcon.classList.add('fa-volume-up');
+                musicToggleBtn.classList.add('playing');
+            }).catch((e) => {
+                console.log("Autoplay blocked:", e);
+            });
+        });
+    }
 
     const toggleMusic = () => {
         if (isPlaying) {
@@ -94,18 +113,6 @@ document.addEventListener('DOMContentLoaded', () => {
         e.stopPropagation();
         toggleMusic();
     });
-
-    // Handle unlocking audio on first meaningful interaction anywhere
-    const unlockAudio = () => {
-        if (!isPlaying) {
-            toggleMusic();
-        }
-        document.removeEventListener('click', unlockAudio);
-        document.removeEventListener('touchstart', unlockAudio);
-    };
-
-    document.addEventListener('click', unlockAudio);
-    document.addEventListener('touchstart', unlockAudio);
 
 
     /* -------------------------------------------
